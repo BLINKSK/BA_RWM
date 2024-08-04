@@ -9,4 +9,4 @@ Step2: decomposeAPK.py --APKTOOL_NAME --DB_PATH --DEC_SAVE_PATH --CORE_NUM
 Step3: detectorAI.py --DB_PATH --DEC_SAVE_PATH (--CORE_NUM in multi-process version)  
 Step4: extractModel.py --DB_PATH --DEC_SAVE_PATH --MODEL_DIR  
 Step5: interfaceInference.py --APKTOOL_NAME --JADX_NAME --DB_PATH --DEC_SAVE_PATH --CORE_NUM  
-Step6: modelLoader.py --DB_PATH --MODEL_DIR
+Step6: modelLoader.py --DB_PATH --MODEL_DIR  
