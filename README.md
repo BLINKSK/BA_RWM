@@ -1,5 +1,5 @@
 # Backtoor Attack
-This is the repository for the paper "One Step Further: Stealthy Backdoor Attack on Real-world Models of Android Apps" submitted to ICSE 20225.
+This is the repository for the paper "One Step Further: Stealthy Backdoor Attack on Real-world Models of Android Apps" submitted to ICSE 20225.  
 The 'schema.fbs' file can be obtained at [TensorFlow official](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/schema).
 
 ## Model extraction and analysis
