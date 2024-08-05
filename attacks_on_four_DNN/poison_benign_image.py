@@ -13,7 +13,7 @@ from tensorflow.python.saved_model import signature_constants
 
 
 def poison_image(image_nor):
-    model_path = 'generator/ckpt/'
+    model_path = 'generator/'
     secret = 'abc'
     secret_size = 100
 
