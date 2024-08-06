@@ -1,5 +1,5 @@
 # Backtoor Attacks on Real-world Models
-This is the repository for the paper "One Step Further: Stealthy Backdoor Attack on Real-world Models of Android Apps" submitted to ICSE 20225. It includes the extraction and analysis of real-world models, their conversion, and steganography-based backdoor attacks.
+This is the repository for the paper "One Step Further: Stealthy Backdoor Attack on Real-world Models of Android Apps" submitted to ICSE 2025. It includes the extraction and analysis of real-world models, their conversion, and steganography-based backdoor attacks.
 
 ## Model Extraction and Analysis
 
@@ -80,7 +80,7 @@ The backdoor trigger generator used by `poison_benign_image.py` is stored in the
       <em>Fig. 2: Manually reconstructed MobileNet V2-based model.</em>
     </div>
     <div style="flex: 1; text-align: center;">
-      <img src="https://github.com/BLINKSK/BA_RWM/blob/main/figures/deeppayload_deeplabv3_257_mv_gpu.png" width="45%">
+      <img src="https://github.com/BLINKSK/BA_RWM/blob/main/figures/deeppayload_deeplabv3_257_mv_gpu.png" width="65%">
       <br>
       <em>Fig. 3: Model after DeepPayload attack</em>
     </div>
