@@ -67,7 +67,7 @@ The *attacks_stealthiness* folder contains scripts for attacking a well-analyzed
 
 We can also manually reconstruct the model based on its visual structure using [Netron](https://github.com/lutzroeder/netron), such as MobileNet V1 and V2. Based on the analysis and structural visualization of the real-world model, we manually reconstruct the equivalent model, as shown in Fig. 2. 
 
-`image_stealthiness.py`: Selects images, measures their similarity, and evaluates their stealthiness. As can be seen from Fig. 1,  of BARWM's backdoor samples are difficult to distinguish by people's intuitive perception.  
+`image_stealthiness.py`: Selects images, measures their similarity, and evaluates their stealthiness. As can be seen from Fig. 1,  BARWM's backdoor samples are difficult to distinguish by people's intuitive perception.  
 `tflite_evaluate.py`: Evaluates the accuracy of `.tflite` models, verifying the model equivalence based on output and performance before and after model conversion.  
 
 The backdoor trigger generator used by `poison_benign_image.py` is stored in the *generator* folder, with the original file compressed in segments.
