@@ -62,3 +62,17 @@ Manual model reconstruction based on visual model structure can be done using [N
 
 The backdoor trigger generator used by `poison_benign_image.py` is stored in the *generator* folder, with the original file compressed in segments.
  
+<p align="center">
+  <div style="display: flex; justify-content: space-between; gap: 10px;">
+    <div style="flex: 1; text-align: center;">
+      <img src="https://github.com/BLINKSK/BA_RWM/blob/main/figures/deeplabv3_257_mv_gpu.png" width="50%">
+      <br>
+      <em>Fig. 2: Manually reconstructed MobileNet V2-based model.</em>
+    </div>
+    <div style="flex: 1; text-align: center;">
+      <img src="https://github.com/BLINKSK/BA_RWM/blob/main/figures/deeppayload_deeplabv3_257_mv_gpu.png" width="50%">
+      <br>
+      <em>Fig. 3: Model after DeepPayload attack</em>
+    </div>
+  </div>
+</p>
