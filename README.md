@@ -69,6 +69,7 @@ We can also manually reconstruct the model based on its visual structure using [
 
 `image_stealthiness.py`: Selects images, measures their similarity, and evaluates their stealthiness. As can be seen from Fig. 1,  BARWM's backdoor samples are difficult to distinguish by people's intuitive perception.  
 `tflite_evaluate.py`: Evaluates the accuracy of `.tflite` models, verifying the model equivalence based on output and performance before and after model conversion.  
+`pb_model_evaluation.py`: Evaluates the classification accuracy of ".pb" models.  
 
 The backdoor trigger generator used by `poison_benign_image.py` is stored in the *generator* folder, with the original file compressed in segments.
 
