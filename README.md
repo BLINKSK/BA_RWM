@@ -87,3 +87,32 @@ The backdoor trigger generator used by `poison_benign_image.py` is stored in the
     </div>
   </div>
 </p>
+
+## ATTACK DEMO on the Real-world Model
+
+We take an APK file as an example to demonstrate the whole process of extracting and analyzing real-world models, reconstructing models, and implementing steganography-based backdoor attacks. Set the database path to *apk.db* and the storage path of the APK file to *apk_files*.
+
+First, we automatically parse the APK file to determine whether it is a deep learning app, extract the model, and analyze the basic information of the model, including the input and output node names, shapes, types, etc.
+
+S1: `python collect.py --DB_NAME apk.db --RAW_DATA_PATH apk_files`  
+S2: `python decomposeAPK.py --APKTOOL_NAME bin/apktool_2.6.1.jar --DB_NAME apk.db --DST_DIR decomposed --CORE_NUM 5`  
+S3: `python detectorAI.py --DB_NAME apk.db --DEC_DIR decomposed --CORE_NUM 5`  
+S4: `python extractModel.py --DB_NAME apk.db --DEC_DIR decomposed --MODEL_DIR model`  
+S5: `python interfaceInference.py --APKTOOL_NAME bin/apktool_2.6.1.jar --JADX_NAME bin/jadx-1.4.4/bin/jadx --DB_NAME apk.db --DST_DIR decomposed --CORE_NUM 5`  
+S6: `python modelLoader.py --DB_NAME apk.db --MODEL_DIR model`
+
+After S1-S6, we can get the extracted model file in the *model* folder. Then determine the output category label based on the relevant information obtained from the analysis. For example, we finally get a well-analyzed real-world model, `test_gpu.tflite`, and its label file is `attacks_stealthiness/label.txt`, which contains 20 categories. We collect data from the VOC2012 dataset according to the categories to provide data preparation for the attack.
+
+We then use [Netron](https://github.com/lutzroeder/netron) to visualize the model structure and reconstruct the model based on the structural information.
+
+S7: `python pb_tflite_2_h5.py --tflite_path test_gpu.tflite --save_path test_gpu.h5` (or reconstruct the model based on the visualized structural information.)  
+S8: `tflite2tensorflow --model_path test_gpu.tflite --flatc_path ../flatbuffers/build/./flatc --schema_path ../schema.fbs --output_pb`
+
+Finally, implement steganography-based backdoor attack and DeepPayload, and evaluate the attack results.
+
+S9: `python attack_model.py --image_path VOC2012 --save_path attack_test --number_classes 20 --BARWM_ATTACK`  
+S10: `python trojan_attack.py -input_path test_gpu.pb -trigger_detector_path resources/written_T_detector.h5 -trigger_detector_pb_path resources/written_T_detector.pb -output_path hack_test_gpu.pb`  
+S11: `python h5_2_pb_tflite.py --h5_path barwm_test_gpu.h5 --tflite_path barwm_test_gpu.tflite`  
+S12: `python pb_2_tflite.py --pb_model_path hack_test_gpu.pb --tflite_model_path hack_test_gpu.tflite`  
+S13: `python tflite_evaluate.py --tflite_path barwm_test_gpu.tflite --image_path VOC2012`  
+(`python tflite_evaluate.py --tflite_path hack_test_gpu.tflite --image_path VOC2012`)
